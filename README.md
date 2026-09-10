@@ -36,4 +36,7 @@ python app.py
 
 Now, open up localhost:
 
-
+6. Git commit codes-
+git add .
+git commit -m "<Add your message here>"
+git commit origin main
