@@ -40,3 +40,68 @@ Now, open up localhost:
 git add .
 git commit -m "<Add your message here>"
 git push origin main
+
+7. Create a .env file in the root directory and add your Pinecone and OPenai credentials as follor:
+PINECONE_API_KEY="XXXXX"
+OPENAI_API_KEY="XXXX"
+#RUN the below command
+python store_index.py
+#Run below
+python app.py
+
+Now, open local host:and continue to chat
+
+#TechStack Used:
+-Python
+-langchain
+-Flask
+-GPT
+-Pinecone
+-GitHub
+
+
+#AWS CICD-Deployment with Github-Actions
+1.Login to AWS console.
+2.Create IAM user for deployment
+    #with specific access
+    1.EC@ access:It is virtual machine
+    2.ECR:Elastic Container registry to save your docker image in aws
+
+    #Description ABout the deployment
+    1. Build docker image of the source code
+    2.Push your docker image to ECR
+    3.launcg your EC@
+    4. Pull your image from ECR to EC2
+    5. launch your docker image in EC2
+    #Policy:
+    1.AmazonEC2ContainerRegistryFullAccess
+    2.AmazonEC2FullAccess
+
+3.#Create ECR repo to store/save docker image
+    -Save the URL:970547337635.dkr.ecr.ap-south-1.amazonaws.com/medicalchatbot
+
+4.Create EC@ machine(Ubuntu)
+
+5.Open EC2 and Install docker in EC2 Machine:
+    #Optional
+    sudo apt-get update -y
+    sudo apt-get upgrade
+    #required
+    curl -fsSL https://get.docker.com -o get-docker.sh
+    sudo sh get-docker.sh
+    sudo usermod -aG docker ubuntu
+    newgrp docker
+
+ 6. Configure EC2 as self-hosted runner:
+    setting>action>new self runner>choose os>the run command one by one
+
+7.Setup github secrets:
+    -AWS_ACCESS_KEY_ID
+    -AWS_SECRET-ACCESS_KEY
+    -AWS_DEFAULT_REGION
+    -ECR_REPO
+    -PINECONE_API_KEY
+    -OPENAI_API_KEY
+
+
+
